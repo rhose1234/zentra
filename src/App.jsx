@@ -1,9 +1,13 @@
-import React from 'react'
+import React from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Homepage from "./Pages/homepage";
 
 export default function App() {
   return (
-    <>
-      <h1 className='text-purple bg-light font-bold text-5xl'>Helllo Zentra!</h1>
-    </>
-  )
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" index element={<Homepage />} />
+      </Routes>
+    </BrowserRouter>
+  );
 }

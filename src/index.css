@@ -5,8 +5,52 @@
  font-family: "Poppins", sans-serif; */
 
  @theme {
-  --color-purple: #7C3AED ;
+  --color-purpla: #7C3AED ;
    --color-light : #7C3AED33 ;
    --color-black : #1E1E1E ;
    --color-white : #FFFFFF ;
+ }
+ h1,h2,h3,h4,h5,h6{
+    font-family: "Poppins", sans-serif;
+ }
+ p{
+  font-family: "Mulish", sans-serif
+ }
+ *{
+  text-decoration: none;
+  box-sizing: border-box;
+ }
+ body{
+  overflow-x: hidden;
+ }
+ .discount1{
+   background:url("./assets/discount1.svg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 100vh;
+  
+ }
+ .discount2{
+   background: url("./assets/discount2.svg");
+    background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 49vh;
+    
+ }
+ .discount3{
+   background: url("./assets/discount3.svg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 49vh;
+   
+ }
+ .subscribe{
+   background: url("./assets/subscribe.svg");
+   background-repeat: no-repeat;
+   background-position: center;
+   background-size: cover;
+   height: 60vh;
  }
