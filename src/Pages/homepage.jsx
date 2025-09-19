@@ -159,7 +159,7 @@ const settings = {
           <div className="flex justify-center align-center">
             <img src={item.image} className="w-50 h-60"/>
           </div>
-            <h2 className="text-black  mt-8 text-xl font-bold">{item.title.slice(0,28)}</h2>
+            <h2 className="text-black  mt-8 text-xl font-bold h-10">{item.title.slice(0,28)}</h2>
             <p className="text-black mt-6 text-base w-55">{item.description.slice(0,77)}</p>
             <h4 className="text-purpla font-bold text-2xl mt-6">{` $${item.price}`}</h4>
 
@@ -176,25 +176,25 @@ const settings = {
     </div>
 
     </div>
-
-    <div className="trusted py-10">
+    
+    <div className="trusted py-10 px-10 lg:px-0">
      
      <Slider {...settings}>
-  <img src={partner1} className="h-20 w-20" />
-  <img src={partner2} className="h-20 w-20" />
-  <img src={partner3} className="h-20 w-20" />
-  <img src={partner4} className="h-20 w-20" />
-  <img src={partner5} className="h-20 w-20" />
+  <img src={partner1} className="h-16 w-20" />
+  <img src={partner2} className="h-16 w-20" />
+  <img src={partner3} className="h-16 w-20" />
+  <img src={partner4} className="h-16 w-20" />
+  <img src={partner5} className="h-16 w-20" />
 </Slider>
 
     
     </div>
 
-    <div className="subscribe py-10 px-14 lg:px- lg:px-34 lg:py-24 mt-10  ">
+    <div className=" w-full subscribe py-40 px-14 lg:px- lg:px-34 lg:py-30 mt-10  ">
       <div className="flex flex-col text-center justify-center items-center">
       <h1 className="text-3xl lg:text-5xl font-bold text-white">Subscribe To Our Newsletter</h1>
       <p className="mt-1 text-white text-base">Get informed about our latest Updates</p>
-     <div class="relative w-100 mt-10">
+     <div className="relative w-100 mt-10">
 
   <input 
     type="text" 
