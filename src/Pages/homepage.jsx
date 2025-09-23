@@ -24,6 +24,26 @@ import heroImg from "../assets/Hero-img.svg";
 
 export default function Homepage() {
 
+  const [email, setEmail] = useState("")
+  const [error, setError] = useState("")
+
+const handleSubscribe = (e) => {
+e.preventDefault()
+
+if (email === ""){
+  setError("Please enter a mail")
+  
+}
+else{
+  setError("You have Subscribed!, Flex on😄")
+  setEmail("")
+  setInterval(() => {
+    setError("")
+  }, 1000);
+}
+
+}
+
   const [products, setProducts] = useState([])
 
   useEffect(() => {
@@ -48,7 +68,7 @@ const settings = {
 
   return (
     <>
-    <div className="hero min-h-screen flex flex-col lg:flex-row items-center">
+    <div className="hero min-h-screen flex flex-col lg:flex-row items-center pt-40 lg:pt-20">
 
       {/* Left Section */}
       <div className="w-full lg:w-1/2 px-8 lg:pl-34 space-y-3 lg:space-y-6 text-center lg:text-left">
@@ -194,20 +214,36 @@ const settings = {
       <div className="flex flex-col text-center justify-center items-center">
       <h1 className="text-3xl lg:text-5xl font-bold text-white">Subscribe To Our Newsletter</h1>
       <p className="mt-1 text-white text-base">Get informed about our latest Updates</p>
+
+     
      <div className="relative w-100 mt-10">
 
+<form id="subscribeForm" onSubmit={handleSubscribe}>
   <input 
+    value={email}
     type="text" 
     placeholder="Enter your email" 
-    className="w-full rounded-xl bg-white shadow-xl px-6 py-4 pr-24 focus:outline-none  "
+    className="w-full rounded-xl bg-white shadow-xl px-6 py-3 pr-24 focus:outline-none  "
+    onChange={(e) => setEmail(e.target.value)}
   />
   <button 
+    type="submit"
     className="absolute right-1 top-1 bottom-1 rounded-xl bg-purpla px-4 text-white ">
     Subscribe
   </button>
+  </form>
 </div>
 
+{error && (
+  <p
+    className="bg-white p-2 mt-3 text-sm rounded-xl"
+    style={{ color: error.includes("Subscribed") ? "green" : "red" }}
+  >
+    {error}
+  </p>
+)}
       </div>
+      
     </div>
 
     

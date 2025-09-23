@@ -23,8 +23,9 @@
  body{
   overflow-x: hidden;
  }
- nav ul li a:active{
-  color: #7C3AED !important;
+
+ .navbar ul li a.active{
+  color: #7C3AED ;
  }
  .discount1{
    background:url("./assets/discount1.svg");
@@ -56,4 +57,11 @@
    background-position: center;
    background-size: cover;
    height: 60vh;
+ }
+ .shopHero{
+  background: url("./assets/shopHero.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
  }

@@ -14,7 +14,7 @@ export default function Footer() {
 
     <div className='flex flex-col space-y-0 '>
     <Link>
-        <img src={logo}  className='h-16 w-16'  />
+        <img src={logo}  className='h-16 w-16' />
     </Link>
        <p className='w-92 lg:w-100 text-black mt-8 text-base'>Zentra is your trusted marketplace for everything
         from fashion to electronics — shop with confidence.</p>
