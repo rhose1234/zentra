@@ -98,6 +98,7 @@ const settings = {
       </div>
     </div>
 
+   
     <div className="arrivals py-10 px-6 lg:px-34 lg:py-14">
 
     <div className="w-1/2">
@@ -174,7 +175,9 @@ const settings = {
 
     <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 justify-between lg:space-x-6">
       {
+       
         products.slice(0, 4).map((item) => (
+            <Link to={`/products/${item.id}`}>
           <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl">
           <div className="flex justify-center align-center">
             <img src={item.image} className="w-50 h-60"/>
@@ -191,6 +194,7 @@ const settings = {
            
            </Link>
           </div>
+          </Link>
         ))
       }
     </div>

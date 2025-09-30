@@ -7,7 +7,12 @@ import { FaStar } from "react-icons/fa";
 
 export default function Shop() {
 
+  const controller = new AbortController()
+
   const [products, setProducts] = useState([])
+  const [visiblecount, setVisibleCount] = useState(6)
+  const [categories] = useState(["Electronics", "Clothing", "Jewelry"]);
+  const [selectedCategory, setSelectedCategory] = useState("Electronics");
 
 
   useEffect(() => {
@@ -17,7 +22,30 @@ export default function Shop() {
           setProducts(data); 
         })
       .catch((err) => console.log(err.message));
-  }, []);
+      return () => {
+    controller.abort()
+  }
+  }
+  , 
+  []);
+
+  const filteredProducts = products.filter((item) => {
+    if(selectedCategory === "Electronics"){
+      return item.category === "electronics"
+    }
+    if(selectedCategory === "Jewelry"){
+      return item.category === "jewelery"
+    }
+if (selectedCategory === "Clothing") {
+    return item.category === "men's clothing" || item.category === "women's clothing";
+  }
+  return true;
+
+  })
+
+  const handleView = () => {
+    setVisibleCount((visiblecount) => visiblecount +  10)
+  }
 
   return (
     <>
@@ -26,47 +54,49 @@ export default function Shop() {
       <p className='text-white mt-2'>Shop from various categories on zentra</p>
     </div>
 
-<div className='pt-16 pb-8 categories flex flex-row justify-center items-center'>
-  <div className='flex flex-row items-center  space-x-10 bg-light   rounded-full  pe-10 '>
-
-    <div className='bg-purpla p-3 rounded-full px-8 text-white'>
-    <h4 className='font-bold'>Electronics</h4>
-    </div>
-
-    <div>
-    <h4 className='font-bold'>Clothing</h4>
-    </div>
-
-    <div>
-    <h4 className='font-bold'>Jewelry</h4>
-    </div>
-
-    </div>
-    </div>
-
+ {/* Category buttons */}
+ <div className='flex justify-center items-center py-16'>
+      <div className="flex flex-row  items-center space-x-10 bg-light rounded-full max-w-xl">
+        {categories.map((cat) => (
+          <div
+            key={cat}
+            onClick={() => setSelectedCategory(cat)}
+            className={`cursor-pointer p-3 rounded-full px-8 font-bold transition-all duration-300 ${
+              selectedCategory === cat
+                ? "bg-purpla text-white"
+                : "hover:text-purpla"
+            }`}
+          >
+            <h4>{cat}</h4>
+          </div>
+        ))}
+      </div>
+</div>
 
 <div className="products py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-8 lg:px-34">
-  {products.slice(0,10).map((item) => (
+  {filteredProducts.slice(0,visiblecount).map((item) => (
+     <Link to={`/products/${item.id}`}>
     <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl ">
       <div className="flex justify-center">
-        <img src={item.image} className="w-50 h-60 mb-10"/>
+        <img src={item.image} className="w-50 h-60 mb-10 "/>
       </div>
+      
       <div className='flex flex-row space-x-1 items-center'>
       <div className='rounded-full h-2 w-2 bg-purpla'></div>
-         <i className='text-xs text-purpla'>Category {item.category}</i>
+         <i className='text-base font-medium text-purpla'> {item.category.charAt(0).toUpperCase() + item.category.slice(1)} </i>
       </div>
      
       <h2 className="text-black mt-2 text-xl font-bold h-16">{item.title.slice(0,49)}</h2>
-      <p className="text-black mt-8 text-base h-20">{item.description.slice(0,80)}</p>
+      <p className="text-black mt-8 text-base/6 h-20">{item.description.slice(0,80)}</p>
 
       <div className='flex flex-row items-center justify-between mt-6'>
         <h4 className="text-purpla font-bold text-3xl">{`$${item.price}`}</h4>
-        <Link to="/">
+
+      
           <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6">
             <p className="font-bold text-white">Add to Cart</p>
             <BsCart2 className='text-white'/>
           </button>
-        </Link>
       </div>
 
       <div className='mt-6 flex flex-row items-center space-x-2'>
@@ -80,8 +110,19 @@ export default function Shop() {
       <strong className='text-xs'>{item.rating.rate}</strong>
       </div>
     </div>
+    </Link>
   ))}
+
 </div>
+
+{
+  visiblecount < filteredProducts.length && (<div className='flex justify-center items-center py-8 w-full' >
+  <button className='bg-transparent text-purpla border border-2 border-purpla rounded-xl py-3 px-20' 
+  onClick={handleView}>View More</button>
+  </div>)
+}
+
+
 
     </>
   )
