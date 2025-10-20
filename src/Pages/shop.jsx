@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom';
-import { BsCart2 } from "react-icons/bs";
+// import { BsCart2 } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
+
 import { FaStar } from "react-icons/fa";
 
 
@@ -8,6 +10,7 @@ import { FaStar } from "react-icons/fa";
 export default function Shop() {
 
   const controller = new AbortController()
+  
 
   const [products, setProducts] = useState([])
   const [visiblecount, setVisibleCount] = useState(6)
@@ -92,11 +95,12 @@ if (selectedCategory === "Clothing") {
       <div className='flex flex-row items-center justify-between mt-6'>
         <h4 className="text-purpla font-bold text-3xl">{`$${item.price}`}</h4>
 
-      
+          <Link to={`/products/${item.id}`}>
           <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6">
-            <p className="font-bold text-white">Add to Cart</p>
-            <BsCart2 className='text-white'/>
+            <p className="font-bold text-white">View Product</p>
+            <FaEye className='text-white'/>
           </button>
+          </Link>
       </div>
 
       <div className='mt-6 flex flex-row items-center space-x-2'>

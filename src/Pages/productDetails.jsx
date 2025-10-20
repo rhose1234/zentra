@@ -1,20 +1,36 @@
 import React, { useEffect, useState } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 import { MdShoppingCartCheckout } from "react-icons/md";
 import { FaStar } from "react-icons/fa";
+import { useCart } from "../Components/cartContext";
+import Popup from "../Components/popup";
 
 
 export default function ProductDetails() {
   const [products, setProducts] = useState(null);
   const [count, setCount] = useState(0);
+  const [popupShow, setPopupshow] = useState(false)
+
+  const {addToCart} = useCart()
+
+  const navigate = useNavigate()
+
+  const handleAddtoCart = () => {
+    setPopupshow(true)
+    addToCart(products, count || 1)
+    setTimeout(()=> {
+      navigate("/shop")
+    }, 3000)
+
+  }
 
   const handleIncrease = () => {
-    setCount((count) => count + 1);
+    setCount((prev) => prev + 1);
   };
   const handleDecrease = () => {
-    setCount((count) => {
-      if (count > 0) {
-        return count - 1;
+    setCount((prev) => {
+      if (prev > 0) {
+        return prev - 1;
       } else {
         return 0;
       }
@@ -36,6 +52,15 @@ export default function ProductDetails() {
 
   return (
     <>
+
+    <div className="popup">
+      {
+        popupShow && ( <Popup 
+        message={`${products.title} has been added to cart`}
+        close={ () => setPopupshow (false)}>
+        </Popup>)
+      }
+    </div>
       <div className="pt-30 pb-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-8 px-8 lg:px-34 md:px-30 items-center">
         {/* Product Image */}
         <div className="">
@@ -87,8 +112,8 @@ export default function ProductDetails() {
             
           </div>
 
-          <button className="flex items-center text-center justify-center gap-2 flex-row bg-purpla text-white px-6 py-3 rounded-lg font-bold transition duration-200">
-            <span>Proceed to Checkout</span>
+          <button onClick={handleAddtoCart} className="flex items-center text-center justify-center gap-2 flex-row bg-purpla text-white px-6 py-3 rounded-lg font-bold transition duration-200">
+            <span>Add to Cart</span>
             <MdShoppingCartCheckout className="h-6 w-6" />
           </button>
 

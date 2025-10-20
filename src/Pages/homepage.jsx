@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BsCart2 } from "react-icons/bs";
+import { FaEye } from "react-icons/fa";
 
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
@@ -153,7 +153,9 @@ const settings = {
        </div>
 
        <div>
+       <Link to="/shop">
         <button className="hover:bg-transparent hover:text-white hover:border hover:border-white bg-white text-purpla font-bold text-xl p-3 px-6 rounded-xl">Shop Now!</button>
+        </Link>
        </div>
       </div>
       <div className="w-full  lg:w-1/2 space-y-3">
@@ -168,9 +170,9 @@ const settings = {
     <div className="flex justify-between mb-10">
       <h1  className="text-2xl lg:text-5xl mt-3 font-bold text-black leading-tight">Featured Products</h1>
 
-      <div>
+      <Link to="/shop">
         <button className="border-purpla border border-2 text-purpla px-8 py-2 rounded-xl text-sm">View All</button>
-      </div>
+      </Link>
     </div>
 
     <div className="flex flex-col lg:flex-row space-y-8 lg:space-y-0 justify-between lg:space-x-6">
@@ -186,13 +188,13 @@ const settings = {
             <p className="text-black mt-6 text-base w-55">{item.description.slice(0,77)}</p>
             <h4 className="text-purpla font-bold text-2xl mt-6">{` $${item.price}`}</h4>
 
-           <Link to="/">
-           <button className="mt-10 bg-purpla textwhite rounded-md flex flex-row items-center space-x-2 py-2 px-6">
-           <p className="font-bold ">Add to Cart</p>
-           <BsCart2/>
-           </button>
-           
-           </Link>
+          <Link to={`/products/${item.id}`}>
+          <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6 mt-4">
+            <p className="font-bold text-white">View Product</p>
+            <FaEye className='text-white'/>
+          </button>
+          </Link>
+
           </div>
           </Link>
         ))

@@ -1,15 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 
 import logo from "/Logo.svg";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useNavigate } from "react-router-dom";
 
 import { IoIosSearch } from "react-icons/io";
 import { BsCartCheck } from "react-icons/bs";
 import { CgMenu, CgClose } from "react-icons/cg";
+import { useCart } from "./cartContext";
+
+
 
 export default function Navbar() {
+
+  // const {cartCount} = useContext(cartContext)
+
   const [isOpen, setIsOpen] = useState(false);
   const [scroll, setScrolled] = useState(false);
+
+  const {cartItems} = useCart()
+  const navigate = useNavigate()
+
 
   useEffect(()=> {
     const handleScroll = () => {
@@ -59,7 +69,7 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
-            <NavLink to="/account" className="font-semibold">
+            <NavLink to="/signup" className="font-semibold">
               Account
             </NavLink>
           </li>
@@ -68,7 +78,19 @@ export default function Navbar() {
         {/* icons */}
         <div className="hidden md:flex lg:flex flex flex-row justify-between space-x-4">
           <IoIosSearch className="w-6 h-6 cursor-pointer" />
-          <BsCartCheck className="w-6 h-6 cursor-pointer" />
+          <div className="relative">
+            <BsCartCheck
+              className="w-6 h-6 cursor-pointer"
+              onClick={() => navigate("/cart")}
+            />
+            {
+              cartItems.length > 0 ? (
+            <span className="absolute -top-2 -right-2 bg-purpla text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+            {cartItems.length}</span>
+            ) : ( <span className="absolute -top-2 -right-2 bg-purpla text-white text-xs rounded-full w-4 h-4 flex items-center justify-center">
+            {cartItems.length}</span>)}
+            </div>
+
         </div>
 
         {/* mobile menu */}
@@ -125,7 +147,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink
-              to="/account"
+              to="/signup"
               className="font-semibold"
               onClick={() => setIsOpen(false)}
             >
@@ -138,10 +160,14 @@ export default function Navbar() {
               className="w-6 h-6 cursor-pointer"
               onClick={() => setIsOpen(false)}
             />
+
+            <div>
             <BsCartCheck
               className="w-6 h-6 cursor-pointer"
-              onClick={() => setIsOpen(false)}
+              onClick={() => navigate("/cart")}
             />
+            </div>
+
           </div>
         </ul>
       )}

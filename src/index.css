@@ -13,7 +13,7 @@
  h1,h2,h3,h4,h5,h6{
     font-family: "Poppins", sans-serif;
  }
- p, a, li, strong{
+ p, a, li, strong, input{
   font-family: "Mulish", sans-serif
  }
  *{
@@ -64,4 +64,13 @@
   background-position: center;
   background-size: cover;
   height: 100vh;
+ }
+ input{
+  border: #f5f5f5 solid 1px ;
+  margin-top: 20px;
+  border-radius: 8px;
+  width: 100%;
+  padding: 10px 10px;
+  font-size: 14px !important;
+  outline: none;
  }

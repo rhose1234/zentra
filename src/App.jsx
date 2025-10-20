@@ -4,18 +4,28 @@ import Homepage from "./Pages/homepage";
 import Navbar from "./Components/Navbar";
 import Footer from "./Components/Footer";
 import Shop from "./Pages/shop";
-import ProductDetails from "./Pages/productContext";
+import ProductDetails from "./Pages/productDetails";
+import { CartProvider } from "./Components/cartContext";
+import Cart from "./Pages/cart";
+import SignIn from "./Auth/signin";
+import Signup from "./Auth/signup";
 
 export default function App() {
   return (
+    
     <>
+    <CartProvider>
     <Navbar/>
       <Routes>
         <Route path="/" index element={<Homepage />} />
         <Route path="/shop" element={<Shop/>} />
         <Route path="/products/:id" element={<ProductDetails/>} />
+        <Route path="/cart" element={<Cart/>} />
+        <Route path="/signin" element ={<SignIn/>} />
+        <Route path="/signup" element={<Signup />}/>
       </Routes>
       <Footer/>
+      </CartProvider>
     </>
   );
 }
