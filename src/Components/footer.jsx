@@ -8,7 +8,7 @@ import facebook from "../assets/facebook.svg"
 export default function Footer() {
   return (
     <>
-    <footer className='py-10 px-6 lg:px-34 lg:py-24 bg-light text-black'>
+    <footer className='py-10 px-6 lg:px-34 lg:py-24 bg-light text-black' id='footer'>
 
 <div className='flex flex-col lg:flex-row justify-between '>
 
