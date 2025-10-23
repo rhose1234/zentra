@@ -47,6 +47,9 @@ export default function Navbar() {
     setErr("Product Available")
      setTimeout(() => {
           navigate(`/shop?search=${searchWord}`);
+          setErr("")
+          setSearchWord("")
+          setIsOpen(false)
     }, 1000);
   }
   else{
@@ -80,9 +83,17 @@ export default function Navbar() {
         <div className="hidden md:flex items-center flex jusify-center space-x-5">
 
          {/* Search bar */}
-<div className="hidden md:block relative w-[28rem] max-w-full ml-4 ">
+<div className="hidden md:block relative flex-col w-[28rem] max-w-full ml-4 ">
+ 
+   <p
+  className={`text-xs font-semibold absolute -top-0 left-34 ${
+    err === "Product Available" ? "text-green-500" : "text-red-500"
+  }`}
+>
+  {err}
+</p>
+
 <form onSubmit={handleSearch} className="hidden md:block relative w-[28rem] max-w-full ml-34">
-<p className="text-xs font-semibold text-red-500">{err}</p>
   <input
     onChange={(e) => setSearchWord(e.target.value)}
     value={searchWord}
@@ -91,12 +102,15 @@ export default function Navbar() {
     className="w-full py-3 pl-4 pr-14 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-purpla"
   />
   <button
-    type="button"
+    type="submit"
     className="absolute right-0 top-11 -translate-y-1/2 bg-purpla p-3 rounded text-white hover:bg-opacity-90 transition"
   >
     <IoIosSearch className="w-5 h-5" />
   </button>
   </form>
+
+
+
 </div>
 
       
@@ -159,7 +173,7 @@ export default function Navbar() {
 
     
       {isOpen && (
-        <ul className="md:hidden flex flex-col space-y-4 bg-purpla text-white py-6 px-8 w-full absolute top-[70px] left-0 z-40 shadow-lg">
+<ul className="md:hidden flex flex-col space-y-4 bg-purpla text-white py-6 px-8 w-full fixed top-[70px] left-0 z-[9999] shadow-lg">
           <li>
             <NavLink to="/" onClick={() => setIsOpen(false)}>
               Home
@@ -179,7 +193,10 @@ export default function Navbar() {
             <NavLink to="/cart">
              <div
             className="relative flex space-x-2 items-center cursor-pointer"
-            onClick={() => navigate("/cart")}
+            onClick={() =>  {
+            navigate("/cart");
+            setIsOpen(false); 
+            }}
           >
         <span className="ml-1 font-semibold">Cart</span>
 
@@ -198,18 +215,31 @@ export default function Navbar() {
           <div className="flex items-center space-x-6 mt-4">
 {/* Mobile Search */}
 <div className="block md:hidden relative w-full px-0 mt-2 mb-3">
+  <p
+  className={`text-xs font-bold absolute -top-0 left-10 ${
+    err === "Product Available" ? "text-green-500" : "text-red-500"
+  }`}
+>
+  {err}
+</p>
+
+<form onSubmit={handleSearch} className="block md:hidden relative w-[28rem] max-w-full ">
   <input
+    onChange={(e) => setSearchWord(e.target.value)}
+    value={searchWord}
     type="text"
     placeholder="Search..."
     className="w-full py-2 pl-4 pr-12 border border-gray-300 rounded-full focus:ring-2 focus:ring-purpla"
   />
   <button
+    type="submit"
     className="absolute right-0 top-11 -translate-y-1/2 bg-white p-4 rounded text-purpla"
   >
     <IoIosSearch />
   </button>
+  </form>
 </div>
-          </div>
+</div>
         </ul>
       )}
     </>

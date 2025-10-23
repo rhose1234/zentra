@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link';
 import logo from "/Logo.svg"
 import twitter from "../assets/twitter.svg"
 import instagram from "../assets/instagram.svg"
@@ -28,13 +29,14 @@ export default function Footer() {
         <Link to="/" >New Arrivals</Link>
     </div>
 
-     <div className='flex justify-between flex-col space-y-3 font-medium mt-10 lg:mt-0' >
-     <h4 className='font-bold text-xl'>Help</h4>
-        <Link to="/" >Track Order</Link>
-        <Link to="/" >Shipping</Link>
-        <Link to="/" >Returns</Link>
-        <Link to="/" >Refunds</Link>
-    </div>
+     <div className='flex justify-between flex-col space-y-3 font-medium mt-10 lg:mt-0'>
+  <h4 className='font-bold text-xl'>Help</h4>
+  <HashLink smooth to="#terms">Track Order</HashLink>
+  <HashLink smooth to="#shipping">Shipping</HashLink>
+  <HashLink smooth to="#returns">Returns</HashLink>
+  <HashLink smooth to="#refunds">Refunds</HashLink>
+</div>
+
 
 
      <div className='flex justify-between flex-col space-y-3 font-medium mt-10 lg:mt-0' >

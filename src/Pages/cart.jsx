@@ -32,13 +32,13 @@ export default function Cart() {
 
       {cartItems.length === 0 ? (
         <div className="">
-        <h1 className="text-3xl font-bold mb-8 text-purpla text-center ">Your Shopping Cart</h1>
-        <p className="text-gray-600 text-center">Your cart is empty😪!!!!</p>
+        <h1 className="text-3xl font-bold mb-8 text-purpla text-center ">Buy Something now 👀</h1>
+        <p className="text-gray-600 text-center">Your cart is empty!!!!</p>
         </div>
       ) : (
         <>
         <div>
-        <h1 className="text-3xl font-bold  text-purpla text-start mb-10 ">Your Shopping Cart</h1>
+        <h1 className="text-3xl font-bold  text-purpla text-start mb-10 ">Minister of enjoyment, Intercontinental 💃🏿 </h1>
 
         <div className="w-full px-4 md:px-10 shadow-sm bg-white py-10 rounded-xl"> 
           {cartItems.map((item) => (
@@ -108,7 +108,7 @@ export default function Cart() {
         </div>
 
          {/* terms and conditions */}
-      <div className="w-full text-base/8 pt-20 pb-10">
+      <div className="w-full text-base/8 pt-20 pb-10" id="terms">
         <div className="justify-center flex flex-col text-center  ">
           <h1 className="text-black font-bold text-3xl">Terms and Conditions</h1>
           <div className="justify-center flex items-center gap-3">
