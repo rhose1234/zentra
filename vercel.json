@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/old-route", "destination": "/new-route", "permanent": true }
+  ],
+  "routes": [
+    { "src": "/.*", "dest": "/404.html", "status": 404 }
+  ]
+}
