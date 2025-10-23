@@ -34,15 +34,24 @@ export default function SignIn() {
         if(!storedData){
           alert("User is not registered")
         }
-        else{
-          storedData.email === values.email && storedData.password === values.password
-        }
-        actions.resetForm()
+        if(storedData.email === values.email && storedData.password === values.password){
+
+         localStorage.setItem("currentUser", JSON.stringify(storedData));
+
+          actions.resetForm()
 
         navigate("/shop")
 
-  }
+        }
+        else{
+          alert("invalid login credentials")
+        }
 
+
+        }
+
+
+      
   return (
     <>
        <div className='gap-8 px-8 lg:px-34 md:px-30 items-center flex justify-center pt-30'>
@@ -68,11 +77,11 @@ export default function SignIn() {
       
       
       
-             <button type='submit' className='bg-purpla text-white w-full mt-10 py-4 rounded-xl font-bold'>Sign up</button>
+             <button type='submit' className='bg-purpla text-white w-full mt-10 py-4 rounded-xl font-bold'>Sign in</button>
       
              <div className='flex row justify-center items-center mt-6'>
               <h6 className='text-black font-semibold'>Don't have an account?</h6>
-              <Link to="/signup" className='text-purpla'>Sign up</Link>
+              <Link to="/signup" className='text-purpla'>Sign Up</Link>
              </div>
       
       

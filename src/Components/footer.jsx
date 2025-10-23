@@ -31,10 +31,10 @@ export default function Footer() {
 
      <div className='flex justify-between flex-col space-y-3 font-medium mt-10 lg:mt-0'>
   <h4 className='font-bold text-xl'>Help</h4>
-  <HashLink smooth to="#terms">Track Order</HashLink>
-  <HashLink smooth to="#shipping">Shipping</HashLink>
-  <HashLink smooth to="#returns">Returns</HashLink>
-  <HashLink smooth to="#refunds">Refunds</HashLink>
+  <HashLink smooth to="/cart#terms">Track Order</HashLink>
+  <HashLink smooth to="/cart#shipping">Shipping</HashLink>
+  <HashLink smooth to="/cart#returns">Returns</HashLink>
+  <HashLink smooth to="/cart#refunds">Refunds</HashLink>
 </div>
 
 

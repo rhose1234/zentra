@@ -96,7 +96,7 @@ export default function ProductDetails() {
           <p className="text-gray-600 text-base/8 w-full">{products.description}</p>
 
 
-         {/* increase and decreadequantity */}
+         {/* increase and decreade quantity */}
           <div className="flex flex-row items-center justify-between py-8">
             <div className="inline-flex items-center space-x-4 bg-white shadow-md rounded-full px-2 py-1">
               <button

@@ -10,6 +10,7 @@ import Cart from "./Pages/cart";
 import SignIn from "./Auth/signin";
 import Signup from "./Auth/signup";
 import ScrollToTop from "./Components/scrollToTop";
+import Invoice from "./Pages/invoice";
 
 export default function App() {
   return (
@@ -25,6 +26,7 @@ export default function App() {
         <Route path="/cart" element={<Cart/>} />
         <Route path="/signin" element ={<SignIn/>} />
         <Route path="/signup" element={<Signup />}/>
+        <Route path="/invoice" element={<Invoice/>} />
       </Routes>
       <Footer/>
       </CartProvider>

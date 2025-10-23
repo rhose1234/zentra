@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, useEffect } from "react";
 
 
 const CartContext = createContext()
@@ -6,15 +6,29 @@ const CartContext = createContext()
 
 export const CartProvider = ({children}) => {
 
+const signedInUser = localStorage.getItem("SignedInUser"); // get stored email (string)
+const cartKey = signedInUser ? `cart_${signedInUser}` : "cart_guest";
 
-const [cartItems, setCartItems] = useState([])
+// load cart from storage
+const [cartItems, setCartItems] = useState(() => {
+  const stored = localStorage.getItem(cartKey);
+  return stored ? JSON.parse(stored) : [];
+});
 
-   const addToCart = (product, quantity = 1) => {
+// save cart to storage whenever it changes
+useEffect(() => {
+  localStorage.setItem(cartKey, JSON.stringify(cartItems));
+}, [cartItems, cartKey]);
+
+
+
+
+
+  const addToCart = (product, quantity = 1) => {
   setCartItems((prev) => {
     const existingItem = prev.find((item) => item.product.id === product.id);
 
-    
-
+  
     if (existingItem) {
 
       // If the product already exists, update its quantity

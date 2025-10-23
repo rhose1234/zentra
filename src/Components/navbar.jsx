@@ -118,11 +118,11 @@ export default function Navbar() {
 
         {/* Desktop Menu */}
         <ul className="hidden md:flex items-center space-x-10 font-semibold mt-3">
-          <li>
+          {/* <li>
             <NavLink to="/" className="hover:text-purpla transition">
               Home
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/shop" className="hover:text-purpla transition">
               Shop
@@ -174,11 +174,11 @@ export default function Navbar() {
     
       {isOpen && (
 <ul className="md:hidden flex flex-col space-y-4 bg-purpla text-white py-6 px-8 w-full fixed top-[70px] left-0 z-[9999] shadow-lg">
-          <li>
+          {/* <li>
             <NavLink to="/" onClick={() => setIsOpen(false)}>
               Home
             </NavLink>
-          </li>
+          </li> */}
           <li>
             <NavLink to="/shop" onClick={() => setIsOpen(false)}>
               Shop

@@ -222,7 +222,7 @@ const settings = {
       <p className="mt-1 text-white text-base">Get informed about our latest Updates</p>
 
      
-     <div className="relative w-100 mt-10">
+     <div className="relative w-100 mt-10 px-10 md:px-0 ">
 
 <form id="subscribeForm" onSubmit={handleSubscribe}>
   <input 
@@ -234,7 +234,7 @@ const settings = {
   />
   <button 
     type="submit"
-    className="absolute right-1 top-6 bottom-1 rounded-xl bg-purpla px-4 text-white ">
+    className="absolute right-11 md:right-1 top-6 bottom-1 rounded-xl bg-purpla px-4 text-white ">
     Subscribe
   </button>
   </form>

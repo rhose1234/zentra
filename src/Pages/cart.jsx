@@ -28,6 +28,7 @@ export default function Cart() {
   
 
   return (
+     <>
     <div className="px-8 lg:px-34 md:px-30 py-40">
 
       {cartItems.length === 0 ? (
@@ -36,7 +37,7 @@ export default function Cart() {
         <p className="text-gray-600 text-center">Your cart is empty!!!!</p>
         </div>
       ) : (
-        <>
+       
         <div>
         <h1 className="text-3xl font-bold  text-purpla text-start mb-10 ">Minister of enjoyment, Intercontinental 💃🏿 </h1>
 
@@ -94,20 +95,24 @@ export default function Cart() {
            </div>
 
               {/* total price and pay button */}
-          <div className="flex justify-between items-center mt-10 px-8 md:px-20">
-            <h3 className="text-xl font-bold">Total Price :</h3>
+          <div className="flex justify-between items-center mt-10 px-8 md:px-20 bg-light py-8">
+          <div className="flex justify-between flex-col items-center">
+            <h3 className="text-sm font-bold mb-4">Total Price :</h3>
             <h3 className="text-3xl font-bold text-purpla">${total.toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits: 2})}</h3>
           </div>
 
-          <Link className="flex justify-center md:justify-end w-full ">
+          <Link className="flex justify-center md:justify-end w-full" to="/invoice">
            <button  className="flex items-center text-center justify-center gap-2 flex-row bg-purpla text-white px-20 py-3 rounded-lg font-bold transition duration-200 mt-10">
                       <span>Pay Now</span>
                       <FaMoneyCheck className="h-6 w-6" />
                     </button>
            </Link>
+              </div>
         </div>
+         
+      )}
 
-         {/* terms and conditions */}
+       {/* terms and conditions */}
       <div className="w-full text-base/8 pt-20 pb-10" id="terms">
         <div className="justify-center flex flex-col text-center  ">
           <h1 className="text-black font-bold text-3xl">Terms and Conditions</h1>
@@ -147,8 +152,7 @@ export default function Cart() {
 
 
       </div>
-        </>
-      )}
     </div>
+     </>
   );
 }
