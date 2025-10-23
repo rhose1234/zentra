@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Homepage from "./Pages/homepage";
-import Navbar from "./Components/Navbar";
-import Footer from "./Components/Footer";
+import Navbar from "./Components/navbar";
+import Footer from "./Components/footer";
 import Shop from "./Pages/shop";
 import ProductDetails from "./Pages/productDetails";
 import { CartProvider } from "./Components/cartContext";
