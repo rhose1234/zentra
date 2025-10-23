@@ -9,6 +9,7 @@ import { CartProvider } from "./Components/cartContext";
 import Cart from "./Pages/cart";
 import SignIn from "./Auth/signin";
 import Signup from "./Auth/signup";
+import ScrollToTop from "./Components/scrollToTop";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
     <>
     <CartProvider>
     <Navbar/>
+    <ScrollToTop />
       <Routes>
         <Route path="/" index element={<Homepage />} />
         <Route path="/shop" element={<Shop/>} />

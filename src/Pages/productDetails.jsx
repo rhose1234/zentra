@@ -95,6 +95,8 @@ export default function ProductDetails() {
           <h1 className="text-3xl font-bold">{products.title}</h1>
           <p className="text-gray-600 text-base/8 w-full">{products.description}</p>
 
+
+         {/* increase and decreadequantity */}
           <div className="flex flex-row items-center justify-between py-8">
             <div className="inline-flex items-center space-x-4 bg-white shadow-md rounded-full px-2 py-1">
               <button
@@ -124,45 +126,8 @@ export default function ProductDetails() {
         </div>
       </div>
 
-      <div className="w-full text-base/8">
-        <div className="justify-center flex flex-col text-center  ">
-          <h1 className="text-black font-bold text-4xl">Terms and Conditions</h1>
-          <div className="justify-center flex items-center gap-3">
-             <div className="h-2 w-2 bg-red-700 rounded"></div>
-            <p className="text-base">By purchasing this product, you agree to the following terms and conditions</p>
-          </div>
-           </div>
 
-        <div className="lg:px:34 md:px-34 px:8 w-full py-20">
-          <h2 className="text-2xl font-bold break-words">Product information</h2>
-          <p className="">We strive to ensure that all product details, images, and descriptions are accurate. However, slight variations 
-          in color, design, or packaging may occur.</p>
-
-          <h2 className="text-2xl font-bold break-words  mt-6 " >Orders & Payments</h2>
-          <ul className="list-disc">
-            <li>All orders are subject to acceptance and availability.</li>
-            <li>Prices are displayed in dollar and are subject to change without prior notice.</li>
-            <li>Payment must be completed before your order is processed and shipped. </li>
-          </ul>
-
-          <h2 className="text-2xl font-bold break-words  mt-6 " >Shipping & Delivery</h2>
-          <ul className="list-disc">
-            <li>Delivery timelines are estimates and may vary due to unforeseen circumstances.</li>
-            <li>We are not responsible for delays caused by courier services or external factors beyond our control.</li>
-          </ul>
-
-          <h2 className="text-2xl font-bold break-words  mt-6 " >Returns & Refunds</h2>
-          <ul className="list-disc">
-            <li>Returns are accepted within 5 days of delivery, provided the product is unused, in its original packaging, and accompanied by proof of purchase.</li>
-            <li>Refunds will be processed according to our [Return Policy/Refund Policy].</li>
-          </ul>
-        </div>
-        
-
-       
-
-
-      </div>
+     
     </>
   );
 }

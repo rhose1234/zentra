@@ -58,25 +58,29 @@ if (selectedCategory === "Clothing") {
     </div>
 
  {/* Category buttons */}
- <div className='flex justify-center items-center py-16'>
-      <div className="flex flex-row  items-center space-x-10 bg-light rounded-full max-w-xl">
-        {categories.map((cat) => (
-          <div
-            key={cat}
-            onClick={() => setSelectedCategory(cat)}
-            className={`cursor-pointer p-3 rounded-full px-8 font-bold transition-all duration-300 ${
-              selectedCategory === cat
-                ? "bg-purpla text-white"
-                : "hover:text-purpla"
-            }`}
-          >
-            <h4>{cat}</h4>
-          </div>
-        ))}
-      </div>
+ <div className='flex justify-center items-center pt-20 pb-8'>
+    <div className="flex flex-wrap  justify-start items-center gap-3 bg-light rounded-full p-1 w-auto">
+  {categories.map((cat) => (
+    <div
+      key={cat}
+      onClick={() => setSelectedCategory(cat)}
+      className={`cursor-pointer px-2 py-2 md:px-6 md:py-2 rounded-full font-medium text-sm md:text-base transition-all duration-300 ${
+        selectedCategory === cat
+          ? "bg-purpla text-white"
+          : "hover:text-purpla"
+      }`}
+    >
+      <h4 className="whitespace-nowrap font-bold">{cat}</h4>
+    </div>
+  ))}
 </div>
 
-<div className="products py-20 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-8 lg:px-34">
+</div>
+
+<div>
+  {
+    !filteredProducts || filteredProducts.length === 0 ? <p className='text-gray-500 text-center text-xl py-20'>Loading products.....</p> : (
+      <div className="products py-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-8 lg:px-34">
   {filteredProducts.slice(0,visiblecount).map((item) => (
      <Link to={`/products/${item.id}`}>
     <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl ">
@@ -117,6 +121,9 @@ if (selectedCategory === "Clothing") {
     </Link>
   ))}
 
+</div>
+    ) 
+  }
 </div>
 
 {

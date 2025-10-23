@@ -234,7 +234,7 @@ const settings = {
   />
   <button 
     type="submit"
-    className="absolute right-1 top-1 bottom-1 rounded-xl bg-purpla px-4 text-white ">
+    className="absolute right-1 top-6 bottom-1 rounded-xl bg-purpla px-4 text-white ">
     Subscribe
   </button>
   </form>

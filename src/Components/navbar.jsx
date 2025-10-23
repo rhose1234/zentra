@@ -10,8 +10,9 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scroll, setScrolled] = useState(false);
   const { cartItems } = useCart();
-  const navigate = useNavigate();
-
+  const navigate = useNavigate(); 
+   
+  
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20);
@@ -19,6 +20,47 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const [searchWord, setSearchWord] = useState("")
+  const [err, setErr] = useState("")
+  const [product, setProduct] = useState([])
+
+    useEffect(() => {
+      fetch(`https://fakestoreapi.com/products`)
+        .then((res) => res.json())
+        .then((data) => setProduct(data))
+        .catch((err) => console.log(err.message));
+    }, []);
+
+  const handleSearch = (e) => {
+  e.preventDefault();
+
+  if (!searchWord.trim()) {
+      setErr("please enter a search Keyword")
+      return;
+  }
+  const findProduct = product.find((item) => {
+    return item.title.toLowerCase().includes(searchWord.toLowerCase())
+  })
+
+  if (findProduct){
+    setErr("Product Available")
+     setTimeout(() => {
+          navigate(`/shop?search=${searchWord}`);
+    }, 1000);
+  }
+  else{
+    setErr("Product Not Found")
+    setTimeout(() => {
+      setErr("")
+    }, 1000);
+
+  setSearchWord("");
+
+   
+  }
+};
+
 
   return (
     <>
@@ -36,26 +78,32 @@ export default function Navbar() {
 
    {/* Desktop Right Icons */}
         <div className="hidden md:flex items-center flex jusify-center space-x-5">
-          {/* Search bar */}
-          <div className="relative w-100">
-            <input
-              type="text"
-              placeholder="Search Products..."
-              className="w-full py-2 pl-4 pr-12 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-purpla"
-            />
-            <button
-              type="button"
-              className="absolute right-2 top-11 -translate-y-1/2 bg-purpla p-2 rounded-full text-white hover:bg-purple-700 transition"
-            >
-              <IoIosSearch className="w-5 h-5" />
-            </button>
-          </div>
+
+         {/* Search bar */}
+<div className="hidden md:block relative w-[28rem] max-w-full ml-4 ">
+<form onSubmit={handleSearch} className="hidden md:block relative w-[28rem] max-w-full ml-34">
+<p className="text-xs font-semibold text-red-500">{err}</p>
+  <input
+    onChange={(e) => setSearchWord(e.target.value)}
+    value={searchWord}
+    type="text"
+    placeholder="Search Products..."
+    className="w-full py-3 pl-4 pr-14 border border-gray-300 rounded-full focus:outline-none focus:ring-1 focus:ring-purpla"
+  />
+  <button
+    type="button"
+    className="absolute right-0 top-11 -translate-y-1/2 bg-purpla p-3 rounded text-white hover:bg-opacity-90 transition"
+  >
+    <IoIosSearch className="w-5 h-5" />
+  </button>
+  </form>
+</div>
 
       
         </div>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex items-center space-x-10 font-semibold">
+        <ul className="hidden md:flex items-center space-x-10 font-semibold mt-3">
           <li>
             <NavLink to="/" className="hover:text-purpla transition">
               Home
@@ -72,12 +120,13 @@ export default function Navbar() {
             </NavLink>
           </li>
           <li>
+
             {/* Cart */}
           <div
-            className="relative flex items-center cursor-pointer"
+            className="relative flex items-center cursor-pointer space-x-1"
             onClick={() => navigate("/cart")}
           >
-                                  <span className="ml-1 font-semibold">Cart</span>
+        <span className="ml-1 font-semibold">Cart</span>
 
             <BsCartCheck className="w-6 h-6 text-purpla" />
             {cartItems.length > 0 && (
@@ -92,7 +141,10 @@ export default function Navbar() {
 
      
 
-        {/* Hamburger for mobile */}
+
+{/* Mobile menu and dropdown lonks */}
+
+        {/* Hamburger  */}
         <button
           className="md:hidden focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
@@ -105,7 +157,7 @@ export default function Navbar() {
         </button>
       </nav>
 
-      {/* MOBILE MENU */}
+    
       {isOpen && (
         <ul className="md:hidden flex flex-col space-y-4 bg-purpla text-white py-6 px-8 w-full absolute top-[70px] left-0 z-40 shadow-lg">
           <li>
@@ -123,20 +175,40 @@ export default function Navbar() {
               Account
             </NavLink>
           </li>
+          <li>
+            <NavLink to="/cart">
+             <div
+            className="relative flex space-x-2 items-center cursor-pointer"
+            onClick={() => navigate("/cart")}
+          >
+        <span className="ml-1 font-semibold">Cart</span>
+
+            <BsCartCheck className="w-6 h-6 text-white" />
+            {cartItems.length > 0 && (
+              <span className="absolute top-2 right-2 bg-white text-purpla text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            )}
+
+          </div>
+            </NavLink>
+          </li>
 
           {/* Mobile Icons */}
           <div className="flex items-center space-x-6 mt-4">
-            <IoIosSearch className="w-6 h-6 cursor-pointer" />
-            <div
-              className="flex items-center space-x-1"
-              onClick={() => {
-                navigate("/cart");
-                setIsOpen(false);
-              }}
-            >
-              <BsCartCheck className="w-6 h-6" />
-              <span>Cart</span>
-            </div>
+{/* Mobile Search */}
+<div className="block md:hidden relative w-full px-0 mt-2 mb-3">
+  <input
+    type="text"
+    placeholder="Search..."
+    className="w-full py-2 pl-4 pr-12 border border-gray-300 rounded-full focus:ring-2 focus:ring-purpla"
+  />
+  <button
+    className="absolute right-0 top-11 -translate-y-1/2 bg-white p-4 rounded text-purpla"
+  >
+    <IoIosSearch />
+  </button>
+</div>
           </div>
         </ul>
       )}
