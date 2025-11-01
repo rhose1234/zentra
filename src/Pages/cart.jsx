@@ -9,11 +9,19 @@ import { IoTrash } from "react-icons/io5";
 
 export default function Cart() {
   const { cartItems, removeItem, updateQuantity, clearCart} = useCart();
+
+const storedData = JSON.parse(localStorage.getItem("currentUser") || "{}");
   
   const handlePay = () => {
+
+    if (!storedData || !storedData.email) {
+    alert("Please signin before making payment.");
+    return;
+  }
+
   const handler = window.PaystackPop.setup({
     key: "pk_test_ac015cb60faaa336dbad2b95cf99d4f03d3fdc11", // Replace with your public key
-    email: "marvelousrhose@gmail.com", 
+    email: storedData.email, 
     amount: total * 100, // Convert Naira to Kobo
     currency: "NGN",
     ref: new Date().getTime().toString(), 
@@ -121,7 +129,7 @@ export default function Cart() {
           <div className="flex-col md:flex-row justify-between items-center mt-10 px-8 md:px-20 bg-light py-8">
           <div className="flex justify-between flex-col items-center">
             <h3 className="text-sm font-bold mb-4">Total Price:</h3>
-            <h3 className="text-3xl font-bold text-purpla">${total.toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits: 2})}</h3>
+            <h3 className="text-3xl font-bold text-purpla">₦{total.toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits: 2})}</h3>
           </div>
 
           <Link className="flex justify-center md:justify-end w-full" onClick={handlePay}>
