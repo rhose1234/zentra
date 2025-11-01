@@ -1,4 +1,3 @@
-import React, { useState } from "react";
 import { useCart } from "../Components/cartContext";
 import { Link } from "react-router-dom";
 import { FaMoneyCheck } from "react-icons/fa";
@@ -6,10 +5,34 @@ import { IoTrash } from "react-icons/io5";
 
 
 
+
+
 export default function Cart() {
-  const { cartItems, removeItem, updateQuantity} = useCart();
-  // const [count, setCount] = useState([item.quantity]);
+  const { cartItems, removeItem, updateQuantity, clearCart} = useCart();
   
+  const handlePay = () => {
+  const handler = window.PaystackPop.setup({
+    key: "pk_test_ac015cb60faaa336dbad2b95cf99d4f03d3fdc11", // Replace with your public key
+    email: "marvelousrhose@gmail.com", 
+    amount: total * 100, // Convert Naira to Kobo
+    currency: "NGN",
+    ref: new Date().getTime().toString(), 
+    callback: (response) => {
+      alert("Payment successful! Reference: " + response.reference);
+      console.log(response);
+      clearCart()
+
+      // Optionally: send reference to your backend for verification
+    },
+    onClose: () => {
+      alert("Payment window closed.");
+    },
+  });
+
+  handler.openIframe();
+};
+
+
   const handleIncrease = (id) => {
     updateQuantity(id, "increase")
   };
@@ -57,7 +80,7 @@ export default function Cart() {
                 />
                 <div>
                   <h2 className="font-bold text-lg w-48 md:w-80">{item.product.title}</h2>
-                  <p className="text-gray-500 text-sm">{`$${item.product.price} per one`}</p>
+                  <p className="text-gray-500 text-sm">{`₦${item.product.price} per one`}</p>
                 </div>
               </div>
 
@@ -74,7 +97,7 @@ export default function Cart() {
                 className="w-10 h-10 flex items-center justify-center text-lg font-bold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition"> + </button>
             </div>
 
-            <h2 className="ms-2 text-xl text-purpla font-extrabold items-center"> ${(item.product.price * item.quantity).toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits : 2})} </h2>
+            <h2 className="ms-2 text-xl text-purpla font-extrabold items-center"> ₦{(item.product.price * item.quantity).toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits : 2})} </h2>
             
           </div>
 
@@ -101,7 +124,7 @@ export default function Cart() {
             <h3 className="text-3xl font-bold text-purpla">${total.toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits: 2})}</h3>
           </div>
 
-          <Link className="flex justify-center md:justify-end w-full" to="/invoice">
+          <Link className="flex justify-center md:justify-end w-full" onClick={handlePay}>
            <button  className="flex items-center text-center justify-center gap-2 flex-row bg-purpla text-white px-20 py-3 rounded-lg font-bold transition duration-200 mt-10">
                       <span>Pay Now</span>
                       <FaMoneyCheck className="h-6 w-6" />

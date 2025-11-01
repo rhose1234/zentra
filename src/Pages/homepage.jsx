@@ -186,7 +186,7 @@ const settings = {
           </div>
             <h2 className="text-black  mt-8 text-xl font-bold h-10">{item.title.slice(0,28)}</h2>
             <p className="text-black mt-6 text-base w-55">{item.description.slice(0,77)}</p>
-            <h4 className="text-purpla font-bold text-2xl mt-6">{` $${item.price}`}</h4>
+            <h4 className="text-purpla font-bold text-2xl mt-6">{` ₦${item.price}`}</h4>
 
           <Link to={`/products/${item.id}`}>
           <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6 mt-4">

@@ -21,7 +21,7 @@
   box-sizing: border-box;
  }
  body{
-  overflow-x: hidden;
+  overflow-x: hidden !important;
  }
 
  .navbar ul li a.active{

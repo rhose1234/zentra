@@ -97,7 +97,7 @@ if (selectedCategory === "Clothing") {
       <p className="text-black mt-8 text-base/6 h-20">{item.description.slice(0,80)}</p>
 
       <div className='flex flex-row items-center justify-between mt-6'>
-        <h4 className="text-purpla font-bold text-3xl">{`$${item.price.toLocaleString()}`}</h4>
+        <h4 className="text-purpla font-bold text-3xl">{`₦${item.price.toLocaleString()}`}</h4>
 
           <Link to={`/products/${item.id}`}>
           <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6">
