@@ -110,7 +110,7 @@ export default function ProductDetails() {
                 className="w-10 h-10 flex items-center justify-center text-lg font-bold text-gray-600 bg-gray-100 rounded-full hover:bg-gray-200 transition"> + </button>
             </div>
 
-            <h2 className="text-4xl/8 text-purpla font-extrabold"> ${(products.price * count).toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits : 2})} </h2>
+            <h2 className="text-4xl/8 text-purpla font-extrabold"> ₦{(products.price * count).toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits : 2})} </h2>
             
           </div>
 

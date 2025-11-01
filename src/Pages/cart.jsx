@@ -118,7 +118,7 @@ export default function Cart() {
            </div>
 
               {/* total price and pay button */}
-          <div className="flex justify-between items-center mt-10 px-8 md:px-20 bg-light py-8">
+          <div className="flex-col md:flex-row justify-between items-center mt-10 px-8 md:px-20 bg-light py-8">
           <div className="flex justify-between flex-col items-center">
             <h3 className="text-sm font-bold mb-4">Total Price :</h3>
             <h3 className="text-3xl font-bold text-purpla">${total.toLocaleString(undefined, {maximumFractionDigits : 2, minimumFractionDigits: 2})}</h3>
