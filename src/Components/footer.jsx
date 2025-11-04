@@ -55,7 +55,7 @@ export default function Footer() {
         
     </div>
 
-<p className='text-sm text-center mt-20'>Zentra © 2025. Designed & Developed by Marvelous❤️</p>
+<p className='text-xs text-center mt-20'>Zentra © 2025. Designed & Developed by Marvelous❤️</p>
     </footer>
       
     </>

@@ -156,11 +156,36 @@ export default function Navbar() {
      
 
 
-{/* Mobile menu and dropdown lonks */}
+{/* Mobile menu and dropdown links */}
 
         {/* Hamburger  */}
-        <button
-          className="md:hidden focus:outline-none"
+
+<div className="md:hidden flex items-center gap-4">
+      
+
+         
+            <NavLink to="/cart">
+             <div
+            className="relative flex space-x-2 items-center cursor-pointer"
+            onClick={() =>  {28
+            navigate("/cart");
+            setIsOpen(false); 
+            }}
+          >
+        {/* <span className="ml-1 font-semibold">Cart</span> */}
+
+            <BsCartCheck className="w-6 h-6 text-purpla" />
+            {cartItems.length > 0 && (
+              <span className="absolute -top-1 -right-1 bg-purpla text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                {cartItems.length}
+              </span>
+            )}
+
+          </div>
+            </NavLink>
+
+                <button
+          className=" focus:outline-none"
           onClick={() => setIsOpen(!isOpen)}
         >
           {isOpen ? (
@@ -169,6 +194,10 @@ export default function Navbar() {
             <CgMenu className="h-7 w-7 text-purpla" />
           )}
         </button>
+
+             
+            </div>
+          
       </nav>
 
     
@@ -189,27 +218,7 @@ export default function Navbar() {
               Account
             </NavLink>
           </li>
-          <li>
-            <NavLink to="/cart">
-             <div
-            className="relative flex space-x-2 items-center cursor-pointer"
-            onClick={() =>  {
-            navigate("/cart");
-            setIsOpen(false); 
-            }}
-          >
-        <span className="ml-1 font-semibold">Cart</span>
-
-            <BsCartCheck className="w-6 h-6 text-white" />
-            {cartItems.length > 0 && (
-              <span className="absolute top-2 right-2 bg-white text-purpla text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                {cartItems.length}
-              </span>
-            )}
-
-          </div>
-            </NavLink>
-          </li>
+         
 
           {/* Mobile Icons */}
           <div className="flex items-center space-x-6 mt-4">

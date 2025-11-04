@@ -20,7 +20,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 
-import heroImg from "../assets/Hero-img.svg";
+import heroImg from "../assets/Hero-img.webp";
 
 export default function Homepage() {
 
