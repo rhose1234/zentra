@@ -96,15 +96,17 @@ if (selectedCategory === "Clothing") {
       <h2 className="text-black mt-2 text-xl font-bold h-16">{item.title.slice(0,49)}</h2>
       <p className="text-black mt-8 text-base/6 h-20">{item.description.slice(0,80)}</p>
 
-      <div className='flex flex-row items-center justify-between mt-6'>
+      <div className='flex flex-row items-center  justify-between mt-6'>
         <h4 className="text-purpla font-bold text-3xl">{`₦${item.price.toLocaleString()}`}</h4>
 
-          <Link to={`/products/${item.id}`}>
-          <button className="bg-purpla text-white rounded-md flex flex-row items-center space-x-2 py-2 px-6">
-            <p className="font-bold text-white">View Product</p>
-            <FaEye className='text-white'/>
-          </button>
-          </Link>
+          <Link
+  to={`/products/${item.id}`}
+  className="bg-purpla text-white rounded-md flex flex-row items-center justify-center space-x-2 py-2 w-40"
+>
+  <p className="font-bold text-[10px] sm:text-xs md:text-sm">View Product</p>
+  <FaEye className="text-[10px] sm:text-xs md:text-sm" />
+</Link>
+
       </div>
 
       <div className='mt-6 flex flex-row items-center space-x-2'>

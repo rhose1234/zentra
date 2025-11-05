@@ -232,21 +232,22 @@ export default function Navbar() {
   {err}
 </p>
 
-<form onSubmit={handleSearch} className="block md:hidden relative w-[28rem] max-w-full ">
+<form onSubmit={handleSearch} className="block md:hidden relative w-[28rem] max-w-full">
   <input
     onChange={(e) => setSearchWord(e.target.value)}
     value={searchWord}
     type="text"
     placeholder="Search..."
-    className="w-full py-2 pl-4 pr-12 border border-gray-300 rounded-full focus:ring-2 focus:ring-purpla"
+    className="w-full py-3 pl-4 pr-12 border border-gray-300 rounded-full focus:ring-2 focus:ring-purpla"
   />
   <button
     type="submit"
-    className="absolute right-0 top-11 -translate-y-1/2 bg-white p-4 rounded text-purpla"
+    className="absolute right-1 top-11 rounded py-2 px-3 -translate-y-1/2 text-purpla bg-white"
   >
-    <IoIosSearch />
+    <IoIosSearch size={22} />
   </button>
-  </form>
+</form>
+
 </div>
 </div>
         </ul>
