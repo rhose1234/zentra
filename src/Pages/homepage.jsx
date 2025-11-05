@@ -181,7 +181,7 @@ const settings = {
         products.slice(0, 4).map((item) => (
           
             <Link to={`/products/${item.id}`}>
-          <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl w-100 md:w-70">
+          <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl w-auto md:w-70">
           <div className="flex justify-center align-center">
             <img src={item.image} className="w-50 h-60"/>
           </div>
