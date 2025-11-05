@@ -242,7 +242,7 @@ export default function Navbar() {
   />
   <button
     type="submit"
-    className="absolute right-1 top-11 rounded py-2 px-3 -translate-y-1/2 text-purpla bg-white"
+    className="absolute right-0 top-10 rounded py-2 px-3 -translate-y-1/2 text-purpla bg-white"
   >
     <IoIosSearch size={22} />
   </button>

@@ -168,10 +168,10 @@ const settings = {
     <div className="featured text-white py-10 px-6 lg:px-34 lg:py-14 ">
 
     <div className="flex justify-between mb-10 items-center">
-      <h1  className="text-xl lg:text-5xl mt-3 font-bold text-black leading-tight">Featured Products</h1>
+      <h1  className="text-xl lg:text-4xl mt-3 font-bold text-black leading-tight">Featured Products</h1>
 
       <Link to="/shop">
-        <button className="border-purpla border border-2 text-purpla px-4 md:px-10 py-2 w-30 rounded-xl text-sm md:text-base ">View All</button>
+        <button className="border-purpla border border-2 text-purpla px-4  lg:px-10 md:px-10 py-2 w-30 md:w-40 rounded-xl text-sm md:text-base ">View All</button>
       </Link>
     </div>
 
@@ -181,12 +181,12 @@ const settings = {
         products.slice(0, 4).map((item) => (
           
             <Link to={`/products/${item.id}`}>
-          <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl">
+          <div key={item.id} className="bg-white shadow-xl px-6 py-10 rounded-xl w-100 md:w-70">
           <div className="flex justify-center align-center">
             <img src={item.image} className="w-50 h-60"/>
           </div>
             <h2 className="text-black  mt-8 text-xl font-bold h-10">{item.title.slice(0,28)}</h2>
-            <p className="text-black mt-6 text-base w-55">{item.description.slice(0,77)}</p>
+            <p className="text-black mt-6 text-base ">{item.description.slice(0,77)}</p>
             <h4 className="text-purpla font-bold text-2xl mt-6">{` ₦${item.price}`}</h4>
 
           <Link to={`/products/${item.id}`}>
