@@ -167,11 +167,11 @@ const settings = {
 
     <div className="featured text-white py-10 px-6 lg:px-34 lg:py-14 ">
 
-    <div className="flex justify-between mb-10">
+    <div className="flex justify-between mb-10 items-center">
       <h1  className="text-xl lg:text-5xl mt-3 font-bold text-black leading-tight">Featured Products</h1>
 
       <Link to="/shop">
-        <button className="border-purpla border border-2 text-purpla px-10 py-2 rounded-xl text-sm">View All</button>
+        <button className="border-purpla border border-2 text-purpla px-4 md:px-10 py-2 w-30 rounded-xl text-sm md:text-base ">View All</button>
       </Link>
     </div>
 
